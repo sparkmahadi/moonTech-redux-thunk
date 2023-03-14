@@ -1,3 +1,4 @@
+import { UPDATE_PRODUCT } from './../actionTypes/actionTypes';
 import {
   ADD_PRODUCT,
   ADD_TO_CART,
@@ -16,6 +17,8 @@ const productReducer = (state = initialState, action) => {
   const selectedProduct = state.cart.find(
     (product) => product._id === action.payload._id
   );
+
+  console.log("payload", action.payload);
 
   switch (action.type) {
 
@@ -38,6 +41,15 @@ const productReducer = (state = initialState, action) => {
           (product) => product._id !== action.payload
         ),
       };
+
+      case UPDATE_PRODUCT:
+        return{
+          ...state,
+          products: [...(state.products.filter(
+            (product) => product._id !== action.payload._id
+          )), action.payload]
+        }
+
     case ADD_TO_CART:
       if (selectedProduct) {
         const newCart = state.cart.filter(

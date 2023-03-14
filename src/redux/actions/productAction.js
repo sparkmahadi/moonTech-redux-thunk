@@ -5,6 +5,7 @@ import {
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT,
+  UPDATE_PRODUCT,
 } from "../actionTypes/actionTypes";
 
 export const loadProduct = (data) => {
@@ -28,6 +29,13 @@ export const removeProduct = (id) => {
     payload: id,
   };
 };
+
+export const updateProduct = product =>{
+  return {
+    type: UPDATE_PRODUCT,
+    payload: product,
+  };
+}
 
 export const addToCart = (product) => {
   return {

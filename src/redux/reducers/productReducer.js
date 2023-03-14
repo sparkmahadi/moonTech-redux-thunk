@@ -1,6 +1,7 @@
 import {
   ADD_PRODUCT,
   ADD_TO_CART,
+  LOAD_PRODUCT,
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT,
@@ -17,11 +18,19 @@ const productReducer = (state = initialState, action) => {
   );
 
   switch (action.type) {
+
     case ADD_PRODUCT:
       return {
         ...state,
         products: [...state.products, action.payload],
       };
+
+    case LOAD_PRODUCT:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
     case REMOVE_PRODUCT:
       return {
         ...state,
@@ -72,7 +81,7 @@ const productReducer = (state = initialState, action) => {
       };
     default:
       return state;
-      // return console.log(state);
+    // return console.log(state);
   }
 
 };

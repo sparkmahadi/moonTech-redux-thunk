@@ -3,19 +3,22 @@ import ProductCard from "../../components/ProductCard";
 import { useDispatch } from 'react-redux';
 import { toggleBrand, toggleStock } from './../../redux/actions/filterAction';
 import { useSelector } from 'react-redux';
+import { loadProduct } from './../../redux/actions/productAction';
+import loadProductData from './../../redux/thunk/products/fetchProducts';
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filter.filters);
+  const products = useSelector((state) => state.product.products);
   const { brands, stock } = filters;
 
+
+  console.log(products);
   // fetching locally
   useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+    dispatch(loadProductData());
+  }, [dispatch]);
 
   // fetching from server
 
@@ -36,18 +39,18 @@ const Home = () => {
 
   if (products?.length && (stock || brands.length)) {
     content = products.filter((product) => {
-      if(stock){
+      if (stock) {
         return product.status === true
       }
-      else{
+      else {
         return product
       }
     })
       .filter((product) => {
-        if(brands.length){
+        if (brands.length) {
           return brands.includes(product.brand)
         }
-        else{
+        else {
           return product
         }
       })

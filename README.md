@@ -1,3 +1,5 @@
-## server
+# Moon Tech | React App
 
-server link : https://github.com/mir-hussain/moon-tech-server
+- This is an e-commerce app made with old redux with redux thunk and react where state management is the main focus.
+
+### server link : https://github.com/sparkmahadi/moon-tech-server

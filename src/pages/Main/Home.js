@@ -23,7 +23,7 @@ const Home = () => {
   // fetching from server
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/products")
+  //   fetch("https://moon-tech-server-wheat.vercel.app/products")
   //     .then((res) => res.json())
   //     .then((data) => setProducts(data.data));
   // }, []);

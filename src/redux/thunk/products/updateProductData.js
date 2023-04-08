@@ -2,7 +2,7 @@ import { updateProduct } from "../../actions/productAction";
 
 const updateProductData = (product) => {
     return async(dispatch, getState) => {
-        const res = await fetch(`http://localhost:5000/product/${product._id}`, {
+        const res = await fetch(`https://moon-tech-server-wheat.vercel.app/product/${product._id}`, {
             method: "PATCH",
             headers: {
                 "content-type" : "application/json",

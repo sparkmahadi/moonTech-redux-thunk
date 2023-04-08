@@ -3,7 +3,7 @@ import { loadProduct } from "../../actions/productAction";
 const loadProductData = () => {
   return async (dispatch, getState) => {
     // const res = await fetch("products.json")
-    const res = await fetch("http://localhost:5000/products");
+    const res = await fetch("https://moon-tech-server-wheat.vercel.app/products");
     const data = await res.json();
 
     console.log(data);
